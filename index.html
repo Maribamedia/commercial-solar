@@ -68,6 +68,7 @@
         color: #0f172a;
         font-feature-settings: "rlig" 1, "calt" 1;
         -webkit-font-smoothing: antialiased;
+        -webkit-tap-highlight-color: transparent;
       }
 
       .bg-dot-pattern {
@@ -90,14 +91,14 @@
         background: #94a3b8;
       }
 
-      /* Navbar Scroll State */
+      /* Navbar Styles */
       .navbar-scrolled {
-        background-color: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(12px);
+        background-color: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
         border-bottom: 1px solid #e2e8f0;
         padding-top: 0.75rem !important;
         padding-bottom: 0.75rem !important;
-        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
       }
       
       /* Investment Gradient */
@@ -133,7 +134,7 @@
         transform: translateY(-50%);
         width: 40px;
         height: 40px;
-        background: rgba(15, 118, 110, 0.8);
+        background: rgba(15, 118, 110, 0.9);
         color: white;
         border: none;
         border-radius: 50%;
@@ -215,13 +216,13 @@
       .partner-badge {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         color: white;
-        padding: 0.25rem 0.75rem;
+        padding: 0.5rem 1rem;
         border-radius: 9999px;
         font-size: 0.75rem;
         font-weight: 600;
         display: inline-flex;
         align-items: center;
-        gap: 0.25rem;
+        gap: 0.5rem;
       }
       
       /* YouTube Video Container */
@@ -245,12 +246,12 @@
       
       /* Showcase Video Sizes - Mobile Optimized */
       .youtube-shorts {
-        height: 400px; /* Reduced from 600px for mobile */
+        height: 320px; /* Reduced for mobile */
         width: 100%;
       }
       
       .youtube-regular {
-        height: 250px; /* Reduced from 400px for mobile */
+        height: 200px; /* Reduced for mobile */
         width: 100%;
       }
       
@@ -260,22 +261,12 @@
         color: white;
       }
 
-      /* Mobile Optimization */
-      @media (min-width: 768px) {
-        .youtube-shorts {
-          height: 600px; /* Original height for desktop */
-        }
-        
-        .youtube-regular {
-          height: 400px; /* Original height for desktop */
-        }
-      }
-
+      /* Mobile First Optimizations */
       @media (max-width: 640px) {
         /* Adjust hero section padding for mobile */
         .hero-section {
-          padding-top: 1.5rem !important;
-          padding-bottom: 1.5rem !important;
+          padding-top: 5.5rem !important;
+          padding-bottom: 2rem !important;
         }
         
         /* Adjust showcase grid for mobile */
@@ -294,8 +285,9 @@
         }
         
         .slide-btn {
-          width: 32px;
-          height: 32px;
+          width: 36px;
+          height: 36px;
+          padding: 8px;
         }
         
         .slide-btn.prev {
@@ -316,40 +308,129 @@
           grid-template-columns: 1fr !important;
           gap: 2rem !important;
         }
+        
+        /* Ensure touch targets are at least 44px */
+        .mobile-touch-target {
+          min-height: 44px;
+          min-width: 44px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        /* Mobile image optimization */
+        .mobile-image {
+          height: 250px;
+          object-fit: cover;
+          width: 100%;
+        }
+        
+        /* Better spacing for mobile sections */
+        .mobile-section-padding {
+          padding-top: 3rem !important;
+          padding-bottom: 3rem !important;
+        }
       }
 
       @media (max-width: 768px) {
         /* Adjust font sizes for mobile */
         .mobile-text-lg {
+          font-size: 1rem !important;
+          line-height: 1.5rem !important;
+        }
+        
+        .mobile-text-xl {
           font-size: 1.125rem !important;
           line-height: 1.75rem !important;
         }
         
-        .mobile-text-xl {
+        .mobile-text-2xl {
           font-size: 1.25rem !important;
           line-height: 1.75rem !important;
         }
         
-        /* Adjust button sizes for mobile */
-        .mobile-btn {
-          padding: 0.75rem 1.5rem !important;
-          font-size: 0.875rem !important;
+        .mobile-text-3xl {
+          font-size: 1.5rem !important;
+          line-height: 2rem !important;
         }
         
-        /* Adjust section padding for mobile */
-        .mobile-section-padding {
-          padding-top: 3rem !important;
-          padding-bottom: 3rem !important;
+        .mobile-text-4xl {
+          font-size: 1.875rem !important;
+          line-height: 2.25rem !important;
         }
+        
+        /* Adjust button sizes for mobile */
+        .mobile-btn {
+          padding: 0.875rem 1.5rem !important;
+          font-size: 0.9375rem !important;
+          min-height: 48px;
+        }
+        
+        /* Adjust YouTube videos for mobile */
+        .youtube-shorts {
+          height: 400px;
+        }
+        
+        .youtube-regular {
+          height: 250px;
+        }
+        
+        /* Better navbar spacing */
+        .navbar-mobile {
+          padding-top: 0.75rem;
+          padding-bottom: 0.75rem;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .youtube-shorts {
+          height: 600px; /* Original height for desktop */
+        }
+        
+        .youtube-regular {
+          height: 400px; /* Original height for desktop */
+        }
+        
+        .mobile-image {
+          height: 320px;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .hero-section {
+          min-height: 90vh;
+          display: flex;
+          align-items: center;
+        }
+        
+        .mobile-image {
+          height: 400px;
+        }
+      }
+
+      /* Image fade in animation */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      .image-fade-in {
+        animation: fadeInUp 0.6s ease-out forwards;
       }
     </style>
 </head>
 <body class="antialiased selection:bg-teal-100 selection:text-teal-900">
 
     <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent py-5">
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/80 backdrop-blur-sm py-4 navbar-mobile border-b border-slate-200/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-            <a href="#home" class="flex items-center gap-2.5 group">
+            <a href="#home" class="flex items-center gap-2.5 group mobile-touch-target">
                 <div class="bg-teal-600 p-1.5 rounded-lg group-hover:bg-teal-700 transition-colors shadow-sm">
                     <i data-lucide="zap" class="w-5 h-5 text-white"></i>
                 </div>
@@ -372,31 +453,31 @@
                 
                 <a href="https://cal.com/partner-discovery/south-africa" 
                    target="_blank"
-                   class="bg-teal-600 hover:bg-teal-500 text-white px-5 py-2 rounded-md text-sm font-medium transition-all shadow-sm hover:shadow-md active:translate-y-0.5 mobile-btn">
+                   class="bg-teal-600 hover:bg-teal-500 text-white px-5 py-2.5 rounded-md text-sm font-medium transition-all shadow-sm hover:shadow-md active:translate-y-0.5 mobile-btn">
                     Schedule Call
                 </a>
             </div>
 
             <!-- Mobile Toggle -->
-            <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-md transition-colors">
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-md transition-colors mobile-touch-target">
                 <i data-lucide="menu" class="w-6 h-6"></i>
             </button>
         </div>
 
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 shadow-lg absolute w-full top-full left-0">
-            <div class="px-4 py-4 space-y-2">
-                <a href="#home" class="mobile-link block px-4 py-3 text-base font-medium text-slate-600 hover:text-teal-600 hover:bg-slate-50 rounded-md transition-colors">Home</a>
-                <a href="#showcase" class="mobile-link block px-4 py-3 text-base font-medium text-slate-600 hover:text-teal-600 hover:bg-slate-50 rounded-md transition-colors">Showcase</a>
-                <a href="#calculator" class="mobile-link block px-4 py-3 text-base font-medium text-slate-600 hover:text-teal-600 hover:bg-slate-50 rounded-md transition-colors">Calculator</a>
-                <a href="#technology" class="mobile-link block px-4 py-3 text-base font-medium text-slate-600 hover:text-teal-600 hover:bg-slate-50 rounded-md transition-colors">Technology</a>
-                <a href="#licensing" class="mobile-link block px-4 py-3 text-base font-medium text-slate-600 hover:text-teal-600 hover:bg-slate-50 rounded-md transition-colors">Licensing</a>
-                <a href="#rd" class="mobile-link block px-4 py-3 text-base font-medium text-slate-600 hover:text-teal-600 hover:bg-slate-50 rounded-md transition-colors">R&D Services</a>
-                <a href="#investment" class="mobile-link block px-4 py-3 text-base font-medium text-slate-600 hover:text-teal-600 hover:bg-slate-50 rounded-md transition-colors">Investment</a>
+            <div class="px-4 py-4 space-y-1">
+                <a href="#home" class="mobile-link block px-4 py-3 text-base font-medium text-slate-600 hover:text-teal-600 hover:bg-slate-50 rounded-md transition-colors mobile-touch-target">Home</a>
+                <a href="#showcase" class="mobile-link block px-4 py-3 text-base font-medium text-slate-600 hover:text-teal-600 hover:bg-slate-50 rounded-md transition-colors mobile-touch-target">Showcase</a>
+                <a href="#calculator" class="mobile-link block px-4 py-3 text-base font-medium text-slate-600 hover:text-teal-600 hover:bg-slate-50 rounded-md transition-colors mobile-touch-target">Calculator</a>
+                <a href="#technology" class="mobile-link block px-4 py-3 text-base font-medium text-slate-600 hover:text-teal-600 hover:bg-slate-50 rounded-md transition-colors mobile-touch-target">Technology</a>
+                <a href="#licensing" class="mobile-link block px-4 py-3 text-base font-medium text-slate-600 hover:text-teal-600 hover:bg-slate-50 rounded-md transition-colors mobile-touch-target">Licensing</a>
+                <a href="#rd" class="mobile-link block px-4 py-3 text-base font-medium text-slate-600 hover:text-teal-600 hover:bg-slate-50 rounded-md transition-colors mobile-touch-target">R&D Services</a>
+                <a href="#investment" class="mobile-link block px-4 py-3 text-base font-medium text-slate-600 hover:text-teal-600 hover:bg-slate-50 rounded-md transition-colors mobile-touch-target">Investment</a>
                 <div class="pt-2">
                     <a href="https://cal.com/partner-discovery/south-africa" 
                        target="_blank"
-                       class="block w-full text-center bg-teal-600 hover:bg-teal-700 text-white px-5 py-3 rounded-md font-medium transition-colors shadow-sm mobile-btn">
+                       class="block w-full text-center bg-teal-600 hover:bg-teal-700 text-white px-5 py-3.5 rounded-md font-medium transition-colors shadow-sm mobile-btn">
                         Schedule Discovery Call
                     </a>
                 </div>
@@ -405,7 +486,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="relative pt-24 pb-16 md:pt-40 md:pb-28 overflow-hidden hero-section">
+    <section id="home" class="relative pt-28 pb-16 md:pt-40 md:pb-28 overflow-hidden hero-section">
         <!-- Background Elements -->
         <div class="absolute inset-0 -z-10 h-full w-full bg-white [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)]"></div>
         <div class="absolute top-0 right-0 -z-10 w-[600px] h-[600px] bg-teal-50 rounded-full blur-3xl opacity-60"></div>
@@ -418,7 +499,7 @@
                     <span>Patent Licensing & Engineering Services</span>
                 </div>
 
-                <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 mb-6 leading-[1.15]">
+                <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 mb-6 leading-[1.15] mobile-text-3xl md:mobile-text-6xl">
                     License Our Patented <br/>
                     <span class="text-teal-600 relative whitespace-nowrap">
                         Energy Mixer™ Technology
@@ -444,13 +525,13 @@
 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="200">
                     <a href="#showcase"
-                       class="inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 md:px-8 md:py-3.5 rounded-lg font-semibold transition-all shadow-md hover:shadow-xl active:scale-95 mobile-btn">
+                       class="inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white px-6 py-3.5 md:px-8 md:py-3.5 rounded-lg font-semibold transition-all shadow-md hover:shadow-xl active:scale-95 mobile-btn">
                         View Hybrid Tree Showcase
                         <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
                     <a href="https://cal.com/partner-discovery/south-africa"
                        target="_blank"
-                       class="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 px-6 py-3 md:px-8 md:py-3.5 rounded-lg font-semibold transition-all shadow-sm hover:shadow-md mobile-btn">
+                       class="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 px-6 py-3.5 md:px-8 md:py-3.5 rounded-lg font-semibold transition-all shadow-sm hover:shadow-md mobile-btn">
                         Schedule Discovery Call
                     </a>
                 </div>
@@ -498,7 +579,7 @@
         <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
                 <div class="text-teal-600 font-semibold tracking-wide uppercase text-sm mb-3">Hybrid Tree Showcase</div>
-                <h2 class="text-2xl md:text-4xl font-bold text-slate-900 mb-6 tracking-tight">Visualizing Africa's Energy Revolution</h2>
+                <h2 class="text-2xl md:text-4xl font-bold text-slate-900 mb-6 tracking-tight mobile-text-3xl">Visualizing Africa's Energy Revolution</h2>
                 <p class="text-base md:text-lg text-slate-600 max-w-2xl mx-auto mobile-text-lg">
                     Experience our Energy Mixer™ technology in action through real demonstrations and installations.
                 </p>
@@ -506,7 +587,7 @@
 
             <!-- Gallery Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 showcase-grid">
-                <!-- Video 1: YouTube Short (dTAxP6esQqo) - 1080x1920 -->
+                <!-- Video 1: YouTube Short (dTAxP6esQqo) -->
                 <div class="gallery-item bg-white rounded-xl overflow-hidden border border-slate-200 shadow-md" data-aos="fade-up" data-aos-delay="0">
                     <div class="youtube-shorts">
                         <iframe 
@@ -519,12 +600,12 @@
                         </iframe>
                     </div>
                     <div class="p-4 md:p-6">
-                        <h3 class="font-bold text-slate-900 mb-2">DC Power Blending Technology</h3>
+                        <h3 class="font-bold text-slate-900 mb-2 mobile-text-lg">DC Power Blending Technology</h3>
                         <p class="text-slate-600 text-sm mb-4">Real-time demonstration of our patented DC blending technology</p>
                     </div>
                 </div>
 
-                <!-- Video 2: YouTube Short (HXYGoLf6NBw) - 1080x1920 -->
+                <!-- Video 2: YouTube Short (HXYGoLf6NBw) -->
                 <div class="gallery-item bg-white rounded-xl overflow-hidden border border-slate-200 shadow-md" data-aos="fade-up" data-aos-delay="100">
                     <div class="youtube-shorts">
                         <iframe 
@@ -537,12 +618,12 @@
                         </iframe>
                     </div>
                     <div class="p-4 md:p-6">
-                        <h3 class="font-bold text-slate-900 mb-2">Hybrid Tree Installation</h3>
+                        <h3 class="font-bold text-slate-900 mb-2 mobile-text-lg">Hybrid Tree Installation</h3>
                         <p class="text-slate-600 text-sm mb-4">Complete system installation process in remote locations</p>
                     </div>
                 </div>
 
-                <!-- Video 3: YouTube Short (AtGL4-C6J_w) - 1080x1920 -->
+                <!-- Video 3: YouTube Short (AtGL4-C6J_w) -->
                 <div class="gallery-item bg-white rounded-xl overflow-hidden border border-slate-200 shadow-md" data-aos="fade-up" data-aos-delay="200">
                     <div class="youtube-shorts">
                         <iframe 
@@ -555,13 +636,53 @@
                         </iframe>
                     </div>
                     <div class="p-4 md:p-6">
-                        <h3 class="font-bold text-slate-900 mb-2">Performance Optimization</h3>
+                        <h3 class="font-bold text-slate-900 mb-2 mobile-text-lg">Performance Optimization</h3>
                         <p class="text-slate-600 text-sm mb-4">Showcasing 22% energy output increase with Energy Mixer™</p>
                     </div>
                 </div>
 
-                <!-- Video 5: Regular YouTube (xNYq29hxABs) - 1920x1080 -->
-                <div class="gallery-item bg-white rounded-xl overflow-hidden border border-slate-200 shadow-md" data-aos="fade-up" data-aos-delay="100">
+                <!-- NEW: Featured Image -->
+                <div class="gallery-item bg-white rounded-xl overflow-hidden border border-slate-200 shadow-md" data-aos="fade-up" data-aos-delay="300">
+                    <div class="relative overflow-hidden mobile-image image-fade-in">
+                        <img 
+                            src="https://raw.githubusercontent.com/commercial-solar/images/Facebook-15.jpg" 
+                            alt="Commercial Solar LLC Hybrid Tree Installation in African Mining Site"
+                            class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                            loading="lazy"
+                            onload="this.parentElement.classList.add('loaded')"
+                        >
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute top-4 left-4">
+                            <div class="inline-flex items-center gap-1 px-3 py-1.5 bg-teal-600 text-white text-xs font-medium rounded-lg shadow-md">
+                                <i data-lucide="star" class="w-3 h-3"></i>
+                                <span>Featured Installation</span>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
+                            <div class="text-white">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <i data-lucide="map-pin" class="w-3 h-3 text-teal-300"></i>
+                                    <span class="text-xs font-medium">Remote Mining Site, Africa</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="font-bold text-slate-900 mb-2 mobile-text-lg">Mining Site Hybrid Installation</h3>
+                        <p class="text-slate-600 text-sm mb-4">Real-world hybrid tree installation providing 24/7 renewable power for mining operations</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-slate-500">Photo Credit: Commercial Solar LLC</span>
+                            <button onclick="window.open('https://raw.githubusercontent.com/commercial-solar/images/Facebook-15.jpg', '_blank')" 
+                                    class="text-teal-600 hover:text-teal-700 text-xs font-medium flex items-center gap-1">
+                                <i data-lucide="maximize" class="w-3 h-3"></i>
+                                View Full Size
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 5: Regular YouTube (xNYq29hxABs) -->
+                <div class="gallery-item bg-white rounded-xl overflow-hidden border border-slate-200 shadow-md" data-aos="fade-up" data-aos-delay="400">
                     <div class="youtube-regular">
                         <iframe 
                             src="https://www.youtube.com/embed/xNYq29hxABs" 
@@ -573,46 +694,64 @@
                         </iframe>
                     </div>
                     <div class="p-4 md:p-6">
-                        <h3 class="font-bold text-slate-900 mb-2">Industrial Application</h3>
+                        <h3 class="font-bold text-slate-900 mb-2 mobile-text-lg">Industrial Application</h3>
                         <p class="text-slate-600 text-sm mb-4">Powering manufacturing and processing facilities</p>
                     </div>
                 </div>
 
-                <!-- Empty slot for grid balance -->
-                <div class="hidden lg:block gallery-item bg-gradient-to-br from-teal-50 to-cyan-100 rounded-xl border border-teal-200 shadow-md flex flex-col items-center justify-center p-6 md:p-8" data-aos="fade-up" data-aos-delay="200">
+                <!-- YouTube Channel Card -->
+                <div class="gallery-item bg-gradient-to-br from-teal-50 to-cyan-100 rounded-xl border border-teal-200 shadow-md flex flex-col items-center justify-center p-6 md:p-8" data-aos="fade-up" data-aos-delay="500">
                     <div class="text-center">
                         <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-teal-100 flex items-center justify-center mx-auto mb-4 md:mb-6">
                             <i data-lucide="video" class="w-6 h-6 md:w-8 md:h-8 text-teal-600"></i>
                         </div>
-                        <h3 class="font-bold text-slate-900 mb-3">More Showcases Available</h3>
+                        <h3 class="font-bold text-slate-900 mb-3 mobile-text-lg">More Showcases Available</h3>
                         <p class="text-slate-600 text-sm mb-4 md:mb-6">
                             Visit our YouTube channel for more demonstrations and real-world applications
                         </p>
                         <a href="https://m.youtube.com/@TheHybridTree" 
                            target="_blank"
-                           class="inline-flex items-center gap-2 bg-teal-600 hover:bg-teal-500 text-white px-4 py-2 md:px-6 md:py-3 rounded-lg font-semibold transition-all shadow-sm hover:shadow-md mobile-btn">
+                           class="inline-flex items-center gap-2 bg-teal-600 hover:bg-teal-500 text-white px-4 py-2.5 md:px-6 md:py-3 rounded-lg font-semibold transition-all shadow-sm hover:shadow-md mobile-btn">
                             <i data-lucide="youtube" class="w-4 h-4"></i>
                             Visit YouTube Channel
                         </a>
                     </div>
                 </div>
-
-                <!-- Mobile version of the YouTube channel card -->
-                <div class="lg:hidden gallery-item bg-gradient-to-br from-teal-50 to-cyan-100 rounded-xl border border-teal-200 shadow-md flex flex-col items-center justify-center p-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="text-center">
-                        <div class="w-12 h-12 rounded-full bg-teal-100 flex items-center justify-center mx-auto mb-4">
-                            <i data-lucide="video" class="w-6 h-6 text-teal-600"></i>
+            </div>
+            
+            <!-- Image Description Section -->
+            <div class="mt-12 md:mt-16" data-aos="fade-up">
+                <div class="bg-white rounded-xl p-6 md:p-8 border border-slate-200 shadow-sm">
+                    <div class="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-teal-100 flex items-center justify-center">
+                                <i data-lucide="info" class="w-6 h-6 md:w-7 md:h-7 text-teal-600"></i>
+                            </div>
                         </div>
-                        <h3 class="font-bold text-slate-900 mb-3">More Showcases Available</h3>
-                        <p class="text-slate-600 text-sm mb-4">
-                            Visit our YouTube channel for more demonstrations
-                        </p>
-                        <a href="https://m.youtube.com/@TheHybridTree" 
-                           target="_blank"
-                           class="inline-flex items-center gap-2 bg-teal-600 hover:bg-teal-500 text-white px-4 py-2 rounded-lg font-semibold transition-all shadow-sm hover:shadow-md text-sm">
-                            <i data-lucide="youtube" class="w-4 h-4"></i>
-                            YouTube Channel
-                        </a>
+                        <div class="flex-1">
+                            <h3 class="text-lg md:text-xl font-bold text-slate-900 mb-2">About the Featured Installation</h3>
+                            <p class="text-slate-600 mb-3">
+                                The image showcases a real-world Hybrid Tree installation at a remote mining site in Africa. This system combines solar panels with wind turbines using our patented Energy Mixer™ technology to provide reliable, 24/7 renewable power for mining operations.
+                            </p>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
+                                <div class="text-center p-3 bg-teal-50 rounded-lg">
+                                    <div class="text-teal-700 font-bold text-sm">10+ kW</div>
+                                    <div class="text-slate-600 text-xs">System Capacity</div>
+                                </div>
+                                <div class="text-center p-3 bg-teal-50 rounded-lg">
+                                    <div class="text-teal-700 font-bold text-sm">24/7</div>
+                                    <div class="text-slate-600 text-xs">Power Availability</div>
+                                </div>
+                                <div class="text-center p-3 bg-teal-50 rounded-lg">
+                                    <div class="text-teal-700 font-bold text-sm">40%</div>
+                                    <div class="text-slate-600 text-xs">Cost Savings</div>
+                                </div>
+                                <div class="text-center p-3 bg-teal-50 rounded-lg">
+                                    <div class="text-teal-700 font-bold text-sm">0 Emissions</div>
+                                    <div class="text-slate-600 text-xs">Carbon Footprint</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -620,17 +759,17 @@
     </section>
 
     <!-- Calculator Section -->
-    <section id="calculator" class="py-12 md:py-24 calculator-section mobile-section-padding">
+    <section id="calculator" class="py-16 md:py-24 calculator-section mobile-section-padding">
         <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-8 md:mb-12" data-aos="fade-up">
                 <div class="text-white/90 font-semibold tracking-wide uppercase text-sm mb-3">Global Energy Calculator</div>
-                <h2 class="text-2xl md:text-4xl font-bold text-white mb-6 tracking-tight">Calculate Hybrid Tree & Mini Grid Energy Globally</h2>
+                <h2 class="text-2xl md:text-4xl font-bold text-white mb-6 tracking-tight mobile-text-3xl">Calculate Hybrid Tree & Mini Grid Energy Globally</h2>
                 <p class="text-base md:text-lg text-white/80 max-w-2xl mx-auto mb-6 md:mb-8 mobile-text-lg">
                     Use our interactive calculator to estimate energy output, cost savings, and ROI for hybrid renewable energy systems in any location worldwide.
                 </p>
                 <a href="https://thehybridcalculator.lovable.app/" 
                    target="_blank"
-                   class="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-100 text-purple-700 px-6 py-3 md:px-8 md:py-3.5 rounded-lg font-semibold transition-all shadow-lg hover:shadow-xl active:scale-95 mobile-btn">
+                   class="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-100 text-purple-700 px-6 py-3.5 md:px-8 md:py-3.5 rounded-lg font-semibold transition-all shadow-lg hover:shadow-xl active:scale-95 mobile-btn">
                     <i data-lucide="calculator" class="w-5 h-5"></i>
                     Launch Hybrid Calculator
                 </a>
@@ -689,8 +828,8 @@
                                     <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
                                     <span>Licensing Opportunity</span>
                                 </div>
-                                <h3 class="text-xl md:text-3xl font-bold text-slate-900 mb-4">Energy Mixer™ Patent Licensing</h3>
-                                <p class="text-slate-600 mb-6 text-sm md:text-base">
+                                <h3 class="text-xl md:text-3xl font-bold text-slate-900 mb-4 mobile-text-2xl">Energy Mixer™ Patent Licensing</h3>
+                                <p class="text-slate-600 mb-6 text-sm md:text-base mobile-text-lg">
                                     Exclusive licensing rights to our US patented DC blending technology that reduces inverter requirements by 40% while increasing energy output by 22%.
                                 </p>
                                 <ul class="space-y-3 mb-6">
@@ -710,7 +849,7 @@
                             </div>
                             <div class="bg-slate-100 rounded-xl p-4 md:p-6 border border-slate-200">
                                 <div class="text-center mb-4">
-                                    <h4 class="font-bold text-slate-900">Licensing Revenue Model</h4>
+                                    <h4 class="font-bold text-slate-900 mobile-text-lg">Licensing Revenue Model</h4>
                                 </div>
                                 <div class="space-y-3 md:space-y-4">
                                     <div class="flex justify-between items-center p-3 bg-white rounded-lg border border-slate-200">
@@ -740,8 +879,8 @@
                                     <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
                                     <span>R&D Services</span>
                                 </div>
-                                <h3 class="text-xl md:text-3xl font-bold text-slate-900 mb-4">Hybrid Tree System Engineering</h3>
-                                <p class="text-slate-600 mb-6 text-sm md:text-base">
+                                <h3 class="text-xl md:text-3xl font-bold text-slate-900 mb-4 mobile-text-2xl">Hybrid Tree System Engineering</h3>
+                                <p class="text-slate-600 mb-6 text-sm md:text-base mobile-text-lg">
                                     Custom engineering and R&D services for integrated solar, wind, and hydro systems optimized for African mining and industrial applications.
                                 </p>
                                 <ul class="space-y-3 mb-6">
@@ -761,7 +900,7 @@
                             </div>
                             <div class="bg-slate-100 rounded-xl p-4 md:p-6 border border-slate-200">
                                 <div class="text-center mb-4">
-                                    <h4 class="font-bold text-slate-900">R&D Service Packages</h4>
+                                    <h4 class="font-bold text-slate-900 mobile-text-lg">R&D Service Packages</h4>
                                 </div>
                                 <div class="space-y-3 md:space-y-4">
                                     <div class="flex justify-between items-center p-3 bg-white rounded-lg border border-slate-200">
@@ -791,8 +930,8 @@
                                     <i data-lucide="wrench" class="w-3.5 h-3.5"></i>
                                     <span>Engineering Services</span>
                                 </div>
-                                <h3 class="text-xl md:text-3xl font-bold text-slate-900 mb-4">Mini Grid Engineering Services</h3>
-                                <p class="text-slate-600 mb-6 text-sm md:text-base">
+                                <h3 class="text-xl md:text-3xl font-bold text-slate-900 mb-4 mobile-text-2xl">Mini Grid Engineering Services</h3>
+                                <p class="text-slate-600 mb-6 text-sm md:text-base mobile-text-lg">
                                     Turnkey engineering services for mini hybrid grids powering mining operations, industrial parks, and energy-independent communities across Africa.
                                 </p>
                                 <ul class="space-y-3 mb-6">
@@ -812,7 +951,7 @@
                             </div>
                             <div class="bg-slate-100 rounded-xl p-4 md:p-6 border border-slate-200">
                                 <div class="text-center mb-4">
-                                    <h4 class="font-bold text-slate-900">Engineering Service Tiers</h4>
+                                    <h4 class="font-bold text-slate-900 mobile-text-lg">Engineering Service Tiers</h4>
                                 </div>
                                 <div class="space-y-3 md:space-y-4">
                                     <div class="flex justify-between items-center p-3 bg-white rounded-lg border border-slate-200">
@@ -834,19 +973,19 @@
                 </div>
 
                 <!-- Slide navigation buttons -->
-                <button class="slide-btn prev">
+                <button class="slide-btn prev mobile-touch-target">
                     <i data-lucide="chevron-left" class="w-4 h-4 md:w-5 md:h-5"></i>
                 </button>
-                <button class="slide-btn next">
+                <button class="slide-btn next mobile-touch-target">
                     <i data-lucide="chevron-right" class="w-4 h-4 md:w-5 md:h-5"></i>
                 </button>
             </div>
 
             <!-- Slide dots -->
             <div class="slide-dots mt-4 md:mt-6">
-                <span class="dot active" data-slide="0"></span>
-                <span class="dot" data-slide="1"></span>
-                <span class="dot" data-slide="2"></span>
+                <span class="dot active mobile-touch-target" data-slide="0"></span>
+                <span class="dot mobile-touch-target" data-slide="1"></span>
+                <span class="dot mobile-touch-target" data-slide="2"></span>
             </div>
         </div>
     </section>
@@ -856,7 +995,7 @@
         <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12 md:mb-16 max-w-3xl mx-auto" data-aos="fade-up">
                 <div class="text-teal-600 font-semibold tracking-wide uppercase text-sm mb-3">Proprietary Technology</div>
-                <h2 class="text-2xl md:text-4xl font-bold text-slate-900 mb-6 tracking-tight">US Patented Energy Mixer™ Technology</h2>
+                <h2 class="text-2xl md:text-4xl font-bold text-slate-900 mb-6 tracking-tight mobile-text-3xl">US Patented Energy Mixer™ Technology</h2>
                 <p class="text-base md:text-lg text-slate-600 leading-relaxed mobile-text-lg">
                     Our core intellectual property enables significant cost reductions and performance improvements in hybrid renewable energy systems.
                 </p>
@@ -902,7 +1041,7 @@
                 <div class="order-1 lg:order-2" data-aos="fade-left">
                     <div class="bg-gradient-to-br from-teal-50 to-cyan-100 rounded-xl md:rounded-2xl p-6 md:p-8 border border-teal-200 relative overflow-hidden">
                         <div class="relative z-10">
-                            <h3 class="text-xl md:text-2xl font-bold text-slate-900 mb-4">IP Portfolio & Protection</h3>
+                            <h3 class="text-xl md:text-2xl font-bold text-slate-900 mb-4 mobile-text-xl">IP Portfolio & Protection</h3>
                             <div class="space-y-4 md:space-y-6">
                                 <div class="flex items-start gap-4">
                                     <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-teal-600 text-white flex items-center justify-center flex-shrink-0">
@@ -998,7 +1137,7 @@
         <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
                 <div class="text-teal-600 font-semibold tracking-wide uppercase text-sm mb-3">Licensing Models</div>
-                <h2 class="text-2xl md:text-4xl font-bold text-slate-900 mb-6 tracking-tight">Energy Mixer™ Patent Licensing</h2>
+                <h2 class="text-2xl md:text-4xl font-bold text-slate-900 mb-6 tracking-tight mobile-text-3xl">Energy Mixer™ Patent Licensing</h2>
                 <p class="text-base md:text-lg text-slate-600 max-w-2xl mx-auto mobile-text-lg">
                     Exclusive licensing opportunities for energy developers, inverter manufacturers, and system integrators.
                 </p>
@@ -1040,7 +1179,7 @@
                     </ul>
                     <a href="https://cal.com/partner-discovery/south-africa"
                        target="_blank"
-                       class="block w-full text-center bg-teal-600 hover:bg-teal-500 text-white font-semibold py-3 px-6 rounded-lg transition-all shadow-lg hover:shadow-teal-600/20 mobile-btn">
+                       class="block w-full text-center bg-teal-600 hover:bg-teal-500 text-white font-semibold py-3.5 px-6 rounded-lg transition-all shadow-lg hover:shadow-teal-600/20 mobile-btn">
                         Inquire About Regional License
                     </a>
                 </div>
@@ -1077,7 +1216,7 @@
                     </ul>
                     <a href="https://cal.com/partner-discovery/south-africa"
                        target="_blank"
-                       class="block w-full text-center bg-amber-500 hover:bg-amber-400 text-white font-semibold py-3 px-6 rounded-lg transition-all shadow-lg hover:shadow-amber-500/20 mobile-btn">
+                       class="block w-full text-center bg-amber-500 hover:bg-amber-400 text-white font-semibold py-3.5 px-6 rounded-lg transition-all shadow-lg hover:shadow-amber-500/20 mobile-btn">
                         Request Manufacturer Terms
                     </a>
                 </div>
@@ -1111,7 +1250,7 @@
                     </ul>
                     <a href="https://cal.com/partner-discovery/south-africa"
                        target="_blank"
-                       class="block w-full text-center bg-teal-600 hover:bg-teal-500 text-white font-semibold py-3 px-6 rounded-lg transition-all shadow-lg hover:shadow-teal-600/20 mobile-btn">
+                       class="block w-full text-center bg-teal-600 hover:bg-teal-500 text-white font-semibold py-3.5 px-6 rounded-lg transition-all shadow-lg hover:shadow-teal-600/20 mobile-btn">
                         Discuss Project Licensing
                     </a>
                 </div>
@@ -1120,7 +1259,7 @@
             <!-- Revenue Projection -->
             <div class="bg-white rounded-xl md:rounded-2xl p-6 md:p-8 border border-slate-200 shadow-sm" data-aos="zoom-in">
                 <div class="text-center mb-8 md:mb-10">
-                    <h3 class="text-xl md:text-2xl font-bold text-slate-900 mb-4">Licensing Revenue Projections</h3>
+                    <h3 class="text-xl md:text-2xl font-bold text-slate-900 mb-4 mobile-text-xl">Licensing Revenue Projections</h3>
                     <p class="text-slate-600 text-sm md:text-base">Based on market adoption in African hybrid renewable sector</p>
                 </div>
                 
@@ -1155,7 +1294,7 @@
         <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
                 <div class="text-teal-600 font-semibold tracking-wide uppercase text-sm mb-3">Research & Development</div>
-                <h2 class="text-2xl md:text-4xl font-bold text-slate-900 mb-6 tracking-tight">Hybrid Tree & Mini Grid Engineering Services</h2>
+                <h2 class="text-2xl md:text-4xl font-bold text-slate-900 mb-6 tracking-tight mobile-text-3xl">Hybrid Tree & Mini Grid Engineering Services</h2>
                 <p class="text-base md:text-lg text-slate-600 max-w-2xl mx-auto mobile-text-lg">
                     Custom R&D and engineering services for integrated renewable energy systems optimized for African applications.
                 </p>
@@ -1169,7 +1308,7 @@
 
             <div class="grid lg:grid-cols-2 gap-8 md:gap-12 items-center mb-12 md:mb-16">
                 <div data-aos="fade-right">
-                    <h3 class="text-xl md:text-2xl font-bold text-slate-900 mb-6">Hybrid Tree System R&D</h3>
+                    <h3 class="text-xl md:text-2xl font-bold text-slate-900 mb-6 mobile-text-xl">Hybrid Tree System R&D</h3>
                     <p class="text-slate-600 mb-6 md:mb-8 text-sm md:text-base">
                         Our R&D team specializes in developing optimized hybrid renewable systems that combine solar, wind, and hydro power for maximum reliability and efficiency in African conditions.
                     </p>
@@ -1200,7 +1339,7 @@
                 </div>
                 <div data-aos="fade-left">
                     <div class="bg-slate-50 rounded-xl p-6 md:p-8 border border-slate-200">
-                        <h4 class="font-bold text-slate-900 mb-6 text-center">Mini Grid Engineering Services</h4>
+                        <h4 class="font-bold text-slate-900 mb-6 text-center mobile-text-lg">Mini Grid Engineering Services</h4>
                         <div class="space-y-4 md:space-y-6">
                             <div class="flex items-center justify-between pb-3 md:pb-4 border-b border-slate-200">
                                 <span class="text-slate-600 text-sm md:text-base">Feasibility Studies</span>
@@ -1226,7 +1365,7 @@
             <!-- R&D Focus Areas -->
             <div class="bg-gradient-to-br from-teal-50 to-cyan-100 rounded-xl md:rounded-2xl p-6 md:p-8 border border-teal-200" data-aos="zoom-in">
                 <div class="text-center mb-8 md:mb-10">
-                    <h3 class="text-xl md:text-2xl font-bold text-slate-900 mb-4">R&D Focus Areas</h3>
+                    <h3 class="text-xl md:text-2xl font-bold text-slate-900 mb-4 mobile-text-xl">R&D Focus Areas</h3>
                     <p class="text-slate-600 text-sm md:text-base">Proprietary technology development for African energy markets</p>
                 </div>
                 
@@ -1269,7 +1408,7 @@
         <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
                 <div class="text-teal-200 font-semibold tracking-wide uppercase text-sm mb-3">Investment Opportunity</div>
-                <h2 class="text-2xl md:text-4xl font-bold text-white mb-6 tracking-tight">$8M Series A for IP Development & Market Expansion</h2>
+                <h2 class="text-2xl md:text-4xl font-bold text-white mb-6 tracking-tight mobile-text-3xl">$8M Series A for IP Development & Market Expansion</h2>
                 <p class="text-teal-100 text-base md:text-lg max-w-2xl mx-auto mobile-text-lg">
                     Investing in patent portfolio expansion, R&D team growth, and global licensing operations.
                 </p>
@@ -1277,7 +1416,7 @@
 
             <div class="grid lg:grid-cols-2 gap-8 md:gap-12 items-center mb-12 md:mb-16">
                 <div data-aos="fade-right">
-                    <h3 class="text-xl md:text-2xl font-bold text-white mb-6">Capital Allocation</h3>
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-6 mobile-text-xl">Capital Allocation</h3>
                     <p class="text-teal-100 mb-6 md:mb-8 text-sm md:text-base">
                         Our $8M Series A funding will accelerate IP development, expand our R&D capabilities, and establish global licensing operations.
                     </p>
@@ -1315,7 +1454,7 @@
                 </div>
                 <div data-aos="fade-left">
                     <div class="bg-white/10 rounded-xl p-6 md:p-8 border border-teal-300/30 backdrop-blur-sm">
-                        <h4 class="font-bold text-white mb-6 text-center">Financial Projections</h4>
+                        <h4 class="font-bold text-white mb-6 text-center mobile-text-lg">Financial Projections</h4>
                         <div class="space-y-4 md:space-y-6">
                             <div class="flex items-center justify-between pb-3 md:pb-4 border-b border-teal-300/30">
                                 <span class="text-teal-100 text-sm md:text-base">Year 1 Revenue</span>
@@ -1345,7 +1484,7 @@
             <!-- IRR Explanation -->
             <div class="bg-white/10 rounded-xl md:rounded-2xl p-6 md:p-8 border border-teal-300/30 backdrop-blur-sm" data-aos="zoom-in">
                 <div class="text-center mb-6 md:mb-8">
-                    <h3 class="text-xl md:text-2xl font-bold text-white mb-4">Investment Returns Analysis</h3>
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-4 mobile-text-xl">Investment Returns Analysis</h3>
                     <p class="text-teal-100 text-sm md:text-base">High-margin licensing business model drives exceptional returns</p>
                 </div>
                 
@@ -1380,7 +1519,7 @@
         <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="max-w-4xl mx-auto">
                 <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
-                    <h2 class="text-2xl md:text-4xl font-bold text-slate-900 mb-6 tracking-tight">Schedule a Discovery Call</h2>
+                    <h2 class="text-2xl md:text-4xl font-bold text-slate-900 mb-6 tracking-tight mobile-text-3xl">Schedule a Discovery Call</h2>
                     <p class="text-base md:text-lg text-slate-600 max-w-2xl mx-auto mobile-text-lg">
                         Book a meeting with our team to discuss licensing opportunities, R&D services, or investment.
                     </p>
@@ -1461,7 +1600,7 @@
                     <div class="flex gap-4">
                         <a href="https://m.youtube.com/@TheHybridTree" 
                            target="_blank"
-                           class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-red-600 hover:text-white transition-all">
+                           class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-red-600 hover:text-white transition-all mobile-touch-target">
                             <i data-lucide="youtube" class="w-3 h-3 md:w-4 md:h-4"></i>
                         </a>
                     </div>
@@ -1539,7 +1678,8 @@
             duration: 800,
             easing: 'ease-out-cubic',
             once: true,
-            offset: 50
+            offset: 50,
+            disable: window.innerWidth < 640 ? true : false
         });
 
         // Navbar Scroll Effect
@@ -1559,12 +1699,35 @@
 
         btn.addEventListener('click', () => {
             menu.classList.toggle('hidden');
+            // Change icon based on menu state
+            const icon = btn.querySelector('i');
+            if (menu.classList.contains('hidden')) {
+                icon.setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+            } else {
+                icon.setAttribute('data-lucide', 'x');
+                lucide.createIcons();
+            }
         });
 
+        // Close mobile menu when clicking links
         links.forEach(link => {
             link.addEventListener('click', () => {
                 menu.classList.add('hidden');
+                const icon = btn.querySelector('i');
+                icon.setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
             });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!menu.contains(event.target) && !btn.contains(event.target) && !menu.classList.contains('hidden')) {
+                menu.classList.add('hidden');
+                const icon = btn.querySelector('i');
+                icon.setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+            }
         });
 
         // Slideshow functionality
@@ -1627,6 +1790,53 @@
 
         slideshowContainer.addEventListener('mouseleave', () => {
             resetInterval();
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            // Reinitialize AOS on mobile to prevent animation issues
+            if (window.innerWidth < 640) {
+                AOS.refresh();
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Close mobile menu if open
+                    if (!menu.classList.contains('hidden')) {
+                        menu.classList.add('hidden');
+                        const icon = btn.querySelector('i');
+                        icon.setAttribute('data-lucide', 'menu');
+                        lucide.createIcons();
+                    }
+                    
+                    const navbarHeight = navbar.offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 20;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Image loading optimization
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.addEventListener('load', function() {
+                    this.classList.add('loaded');
+                });
+            });
         });
     </script>
 </body>
