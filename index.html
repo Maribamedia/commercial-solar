@@ -44,11 +44,17 @@
                 700: '#404040',
                 800: '#262626',
                 900: '#171717',
+              },
+              whatsapp: {
+                green: '#25D366',
+                dark: '#075E54',
+                light: '#128C7E',
               }
             },
             animation: {
               'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
               'float': 'float 6s ease-in-out infinite',
+              'bounce-slow': 'bounce 2s infinite',
             },
             keyframes: {
               float: {
@@ -102,6 +108,31 @@
         padding-top: 0.75rem !important;
         padding-bottom: 0.75rem !important;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      }
+      
+      /* WhatsApp Specific Styles */
+      .whatsapp-button {
+        background-color: #25D366;
+        color: white;
+        transition: all 0.3s ease;
+      }
+      
+      .whatsapp-button:hover {
+        background-color: #128C7E;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+      }
+      
+      .whatsapp-outline {
+        border-color: #25D366;
+        color: #25D366;
+        transition: all 0.3s ease;
+      }
+      
+      .whatsapp-outline:hover {
+        background-color: rgba(37, 211, 102, 0.1);
+        border-color: #128C7E;
+        color: #128C7E;
       }
       
       /* Investment Gradient */
@@ -260,6 +291,58 @@
         color: white;
       }
 
+      /* WhatsApp Widget */
+      .whatsapp-widget {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 10px;
+      }
+      
+      .whatsapp-floating-button {
+        width: 60px;
+        height: 60px;
+        background: #25D366;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+        transition: all 0.3s ease;
+        border: 2px solid white;
+        animation: bounce-slow 2s infinite;
+      }
+      
+      .whatsapp-floating-button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+        background: #128C7E;
+      }
+      
+      .whatsapp-tooltip {
+        background: #000000;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 8px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        pointer-events: none;
+        white-space: nowrap;
+      }
+      
+      .whatsapp-floating-button:hover + .whatsapp-tooltip {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
       /* Mobile First Optimizations */
       @media (max-width: 640px) {
         .hero-section {
@@ -319,6 +402,16 @@
         .mobile-section-padding {
           padding-top: 3rem !important;
           padding-bottom: 3rem !important;
+        }
+        
+        .whatsapp-widget {
+          bottom: 15px;
+          right: 15px;
+        }
+        
+        .whatsapp-floating-button {
+          width: 56px;
+          height: 56px;
         }
       }
 
@@ -461,6 +554,13 @@
         background-color: #ffffff;
         color: #000000;
       }
+      
+      /* WhatsApp icon circle */
+      .icon-circle-whatsapp {
+        background-color: #25D366;
+        color: #ffffff;
+        border-color: #25D366;
+      }
     </style>
 </head>
 <body class="antialiased selection:bg-gray-200 selection:text-gray-900">
@@ -488,10 +588,11 @@
                 
                 <div class="h-6 w-px bg-gray-300 mx-2"></div>
                 
-                <a href="https://cal.com/partner-discovery/south-africa" 
+                <a href="https://wa.me/27766473499?text=Hello%20Commercial%20Solar%20LLC,%20I'm%20interested%20in%20your%2040%%20inverter%20cost%20reduction%20and%2090-day%20guarantee."
                    target="_blank"
-                   class="bg-black hover:bg-gray-800 text-white px-5 py-2.5 rounded-md text-sm font-medium transition-all border-2 border-black hover:shadow-lg mobile-btn text-emphasis">
-                    Schedule Call
+                   class="whatsapp-button px-5 py-2.5 rounded-md text-sm font-medium transition-all border-2 border-whatsapp-green mobile-btn text-emphasis flex items-center gap-2">
+                    <i data-lucide="message-circle" class="w-4 h-4"></i>
+                    WhatsApp Chat
                 </a>
             </div>
 
@@ -511,15 +612,28 @@
                 <a href="#process" class="mobile-link block px-4 py-3 text-base font-medium text-gray-600 hover:text-black hover:bg-gray-50 rounded-md transition-colors mobile-touch-target">Process</a>
                 <a href="#showcase" class="mobile-link block px-4 py-3 text-base font-medium text-gray-600 hover:text-black hover:bg-gray-50 rounded-md transition-colors mobile-touch-target">Showcase</a>
                 <div class="pt-2">
-                    <a href="https://cal.com/partner-discovery/south-africa" 
+                    <a href="https://wa.me/27766473499?text=Hello%20Commercial%20Solar%20LLC,%20I'm%20interested%20in%20your%2040%%20inverter%20cost%20reduction%20and%2090-day%20guarantee."
                        target="_blank"
-                       class="block w-full text-center bg-black hover:bg-gray-800 text-white px-5 py-3.5 rounded-md font-medium transition-colors border-2 border-black mobile-btn text-emphasis">
-                        Schedule Discovery Call
+                       class="whatsapp-button block w-full text-center px-5 py-3.5 rounded-md font-medium transition-colors border-2 border-whatsapp-green mobile-btn text-emphasis flex items-center justify-center gap-2">
+                        <i data-lucide="message-circle" class="w-4 h-4"></i>
+                        WhatsApp Chat
                     </a>
                 </div>
             </div>
         </div>
     </nav>
+
+    <!-- WhatsApp Widget -->
+    <div class="whatsapp-widget">
+        <div class="whatsapp-tooltip">
+            Chat with us on WhatsApp
+        </div>
+        <a href="https://wa.me/27766473499?text=Hello%20Commercial%20Solar%20LLC,%20I%20saw%20your%20website%20and%20would%20like%20to%20discuss%20the%2040%%20inverter%20cost%20reduction."
+           target="_blank"
+           class="whatsapp-floating-button">
+            <i data-lucide="message-circle" class="w-7 h-7"></i>
+        </a>
+    </div>
 
     <!-- Hero Section -->
     <section id="home" class="relative pt-28 pb-16 md:pt-40 md:pb-28 overflow-hidden hero-section">
@@ -585,10 +699,11 @@
                         View Our Solutions
                         <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
-                    <a href="https://cal.com/partner-discovery/south-africa"
+                    <a href="https://wa.me/27766473499?text=Hello%20Commercial%20Solar%20LLC,%20I%20want%20to%20start%20my%2090-day%20guarantee%20for%2040%%20inverter%20cost%20reduction."
                        target="_blank"
-                       class="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-black border-2 border-black px-6 py-3.5 md:px-8 md:py-3.5 rounded-lg font-semibold transition-all hover:shadow-md mobile-btn">
-                        Start Your 90-Day Guarantee
+                       class="whatsapp-button inline-flex items-center justify-center gap-2 px-6 py-3.5 md:px-8 md:py-3.5 rounded-lg font-semibold transition-all hover:shadow-md mobile-btn flex items-center gap-2">
+                        <i data-lucide="message-circle" class="w-4 h-4"></i>
+                        Start on WhatsApp
                     </a>
                 </div>
 
@@ -645,6 +760,12 @@
                             <span class="text-gray-700">Existing infrastructure compatibility</span>
                         </li>
                     </ul>
+                    <a href="https://wa.me/27766473499?text=Hi,%20I'm%20interested%20in%20your%20Technology%20Integration%20solution%20for%20wind%20and%20hydro%20integration."
+                       target="_blank"
+                       class="whatsapp-outline inline-flex items-center justify-center gap-2 w-full py-3 rounded-md font-medium transition-all border-2 text-sm">
+                        <i data-lucide="message-circle" class="w-4 h-4"></i>
+                        Discuss on WhatsApp
+                    </a>
                 </div>
 
                 <!-- Solution 2 -->
@@ -670,6 +791,12 @@
                             <span class="text-gray-700">Competitive bidding advantage</span>
                         </li>
                     </ul>
+                    <a href="https://wa.me/27766473499?text=Hi,%20I%20want%20to%20learn%20more%20about%20Cost%20Optimization%20and%20the%2040%%20inverter%20savings."
+                       target="_blank"
+                       class="whatsapp-outline inline-flex items-center justify-center gap-2 w-full py-3 rounded-md font-medium transition-all border-2 text-sm">
+                        <i data-lucide="message-circle" class="w-4 h-4"></i>
+                        Discuss on WhatsApp
+                    </a>
                 </div>
 
                 <!-- Solution 3 -->
@@ -695,6 +822,12 @@
                             <span class="text-gray-700">Full performance verification</span>
                         </li>
                     </ul>
+                    <a href="https://wa.me/27766473499?text=Hi,%20I'd%20like%20to%20start%20the%2090-day%20guaranteed%20implementation%20process."
+                       target="_blank"
+                       class="whatsapp-outline inline-flex items-center justify-center gap-2 w-full py-3 rounded-md font-medium transition-all border-2 text-sm">
+                        <i data-lucide="message-circle" class="w-4 h-4"></i>
+                        Discuss on WhatsApp
+                    </a>
                 </div>
             </div>
         </div>
@@ -713,7 +846,7 @@
 
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Product 1 -->
-                <div class="card-bg-gray rounded-xl p-6 border-2 border-black" data-aos="fade-up" data-aos-delay="0">
+                <div class="card-bg-gray rounded-xl p-6 border-2 border-black hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="0">
                     <div class="icon-circle icon-circle-white mb-4">
                         <i data-lucide="cpu" class="w-5 h-5"></i>
                     </div>
@@ -722,7 +855,7 @@
                 </div>
 
                 <!-- Product 2 -->
-                <div class="card-bg-gray rounded-xl p-6 border-2 border-black" data-aos="fade-up" data-aos-delay="50">
+                <div class="card-bg-gray rounded-xl p-6 border-2 border-black hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="50">
                     <div class="icon-circle icon-circle-white mb-4">
                         <i data-lucide="wind" class="w-5 h-5"></i>
                     </div>
@@ -731,7 +864,7 @@
                 </div>
 
                 <!-- Product 3 -->
-                <div class="card-bg-gray rounded-xl p-6 border-2 border-black" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-bg-gray rounded-xl p-6 border-2 border-black hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
                     <div class="icon-circle icon-circle-white mb-4">
                         <i data-lucide="droplets" class="w-5 h-5"></i>
                     </div>
@@ -740,7 +873,7 @@
                 </div>
 
                 <!-- Product 4 -->
-                <div class="card-bg-gray rounded-xl p-6 border-2 border-black" data-aos="fade-up" data-aos-delay="150">
+                <div class="card-bg-gray rounded-xl p-6 border-2 border-black hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="150">
                     <div class="icon-circle icon-circle-white mb-4">
                         <i data-lucide="settings" class="w-5 h-5"></i>
                     </div>
@@ -749,7 +882,7 @@
                 </div>
 
                 <!-- Product 5 -->
-                <div class="card-bg-gray rounded-xl p-6 border-2 border-black" data-aos="fade-up" data-aos-delay="0">
+                <div class="card-bg-gray rounded-xl p-6 border-2 border-black hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="0">
                     <div class="icon-circle icon-circle-white mb-4">
                         <i data-lucide="monitor" class="w-5 h-5"></i>
                     </div>
@@ -758,7 +891,7 @@
                 </div>
 
                 <!-- Product 6 -->
-                <div class="card-bg-gray rounded-xl p-6 border-2 border-black" data-aos="fade-up" data-aos-delay="50">
+                <div class="card-bg-gray rounded-xl p-6 border-2 border-black hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="50">
                     <div class="icon-circle icon-circle-white mb-4">
                         <i data-lucide="shield" class="w-5 h-5"></i>
                     </div>
@@ -767,7 +900,7 @@
                 </div>
 
                 <!-- Product 7 -->
-                <div class="card-bg-gray rounded-xl p-6 border-2 border-black" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-bg-gray rounded-xl p-6 border-2 border-black hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
                     <div class="icon-circle icon-circle-white mb-4">
                         <i data-lucide="download" class="w-5 h-5"></i>
                     </div>
@@ -776,13 +909,22 @@
                 </div>
 
                 <!-- Product 8 -->
-                <div class="card-bg-gray rounded-xl p-6 border-2 border-black" data-aos="fade-up" data-aos-delay="150">
+                <div class="card-bg-gray rounded-xl p-6 border-2 border-black hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="150">
                     <div class="icon-circle icon-circle-white mb-4">
                         <i data-lucide="book-open" class="w-5 h-5"></i>
                     </div>
                     <h3 class="text-lg font-bold text-black mb-2">Training Program</h3>
                     <p class="text-gray-600 text-sm">Complete EPC team certification</p>
                 </div>
+            </div>
+            
+            <div class="mt-12 text-center" data-aos="fade-up" data-aos-delay="200">
+                <a href="https://wa.me/27766473499?text=Hi,%20I'd%20like%20to%20discuss%20your%20complete%20product%20suite%20for%20Energy%20Mixer%E2%84%A2%20integration."
+                   target="_blank"
+                   class="whatsapp-button inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg font-semibold transition-all hover:shadow-md mobile-btn">
+                    <i data-lucide="message-circle" class="w-5 h-5"></i>
+                    Get Product Details on WhatsApp
+                </a>
             </div>
         </div>
     </section>
@@ -911,6 +1053,15 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            
+            <div class="mt-12 text-center" data-aos="fade-up" data-aos-delay="200">
+                <a href="https://wa.me/27766473499?text=I%20want%20to%20start%20the%20risk-free%2090-day%20guarantee%20for%2040%%20inverter%20cost%20reduction."
+                   target="_blank"
+                   class="whatsapp-button inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg font-semibold transition-all hover:shadow-md mobile-btn text-lg">
+                    <i data-lucide="message-circle" class="w-5 h-5"></i>
+                    Start Risk-Free Guarantee on WhatsApp
+                </a>
             </div>
         </div>
     </section>
@@ -1048,6 +1199,15 @@
                     </div>
                 </div>
             </div>
+            
+            <div class="mt-12 text-center" data-aos="fade-up" data-aos-delay="200">
+                <a href="https://wa.me/27766473499?text=I'd%20like%20to%20discuss%20the%2090-day%20implementation%20process%20for%20my%20project."
+                   target="_blank"
+                   class="whatsapp-button inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg font-semibold transition-all hover:shadow-md mobile-btn">
+                    <i data-lucide="message-circle" class="w-5 h-5"></i>
+                    Discuss Implementation on WhatsApp
+                </a>
+            </div>
         </div>
     </section>
 
@@ -1118,6 +1278,55 @@
                     </div>
                 </div>
             </div>
+            
+            <div class="mt-12 text-center" data-aos="fade-up" data-aos-delay="200">
+                <a href="https://wa.me/27766473499?text=I%20saw%20your%20project%20showcase%20and%20would%20like%20to%20see%20more%20case%20studies%20for%20my%20EPC%20business."
+                   target="_blank"
+                   class="whatsapp-outline inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg font-semibold transition-all hover:shadow-md mobile-btn border-2">
+                    <i data-lucide="message-circle" class="w-5 h-5"></i>
+                    Request Case Studies on WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 md:py-24 bg-black text-white">
+        <div class="container max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center" data-aos="fade-up">
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-whatsapp-green text-white rounded-full text-sm font-medium mb-6" data-aos="zoom-in" data-aos-delay="100">
+                    <i data-lucide="message-circle" class="w-4 h-4"></i>
+                    <span class="text-emphasis">Start Your 90-Day Guarantee Today</span>
+                </div>
+                
+                <h2 class="text-2xl md:text-4xl font-bold text-white mb-6 tracking-tight mobile-text-3xl">
+                    Ready to Reduce Your Inverter Costs by 40%?
+                </h2>
+                
+                <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed mobile-text-lg">
+                    Chat with us on WhatsApp now to start your risk-free 90-day guarantee. No commitment required for initial consultation.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center" data-aos="fade-up" data-aos-delay="200">
+                    <a href="https://wa.me/27766473499?text=Hello%20Commercial%20Solar%20LLC,%20I'm%20ready%20to%20start%20the%2090-day%20guarantee%20for%2040%%20inverter%20cost%20reduction.%20Please%20send%20me%20more%20information."
+                       target="_blank"
+                       class="whatsapp-button inline-flex items-center justify-center gap-3 px-8 py-4 rounded-lg font-bold transition-all hover:shadow-xl text-lg mobile-btn">
+                        <i data-lucide="message-circle" class="w-6 h-6"></i>
+                        Start Chat on WhatsApp
+                    </a>
+                    
+                    <div class="text-gray-400 text-sm mt-2 sm:mt-0">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="clock" class="w-4 h-4"></i>
+                            <span>Typically respond within 15 minutes</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 text-gray-400 text-sm">
+                    <p>Direct WhatsApp: <strong class="text-white">+27766473499</strong></p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1139,10 +1348,15 @@
                         </span>
                     </div>
                     <div class="flex gap-4">
+                        <a href="https://wa.me/27766473499?text=Hello%20Commercial%20Solar%20LLC"
+                           target="_blank"
+                           class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-whatsapp-green flex items-center justify-center text-white hover:bg-whatsapp-dark transition-all mobile-touch-target">
+                            <i data-lucide="message-circle" class="w-5 h-5 md:w-6 md:h-6"></i>
+                        </a>
                         <a href="https://m.youtube.com/@TheHybridTree" 
                            target="_blank"
-                           class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:bg-white hover:text-black transition-all mobile-touch-target border border-gray-700">
-                            <i data-lucide="youtube" class="w-3 h-3 md:w-4 md:h-4"></i>
+                           class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:bg-white hover:text-black transition-all mobile-touch-target">
+                            <i data-lucide="youtube" class="w-5 h-5 md:w-6 md:h-6"></i>
                         </a>
                     </div>
                 </div>
@@ -1174,24 +1388,24 @@
                     <h5 class="text-base md:text-lg font-bold text-white mb-4 md:mb-6">Contact & Resources</h5>
                     <ul class="space-y-3 md:space-y-4">
                         <li class="flex items-center gap-3 text-sm text-gray-300">
-                            <i data-lucide="mail" class="w-3 h-3 md:w-4 md:h-4 text-white"></i>
-                            <a href="mailto:victor@maribamedia.co.za" class="hover:text-white text-sm">victor@maribamedia.co.za</a>
+                            <i data-lucide="message-circle" class="w-4 h-4 md:w-5 md:h-5 text-whatsapp-green"></i>
+                            <a href="https://wa.me/27766473499" 
+                               target="_blank"
+                               class="hover:text-white text-sm">Chat on WhatsApp</a>
                         </li>
                         <li class="flex items-center gap-3 text-sm text-gray-300">
-                            <i data-lucide="phone" class="w-3 h-3 md:w-4 md:h-4 text-white"></i>
+                            <i data-lucide="phone" class="w-4 h-4 md:w-5 md:h-5 text-white"></i>
                             <span class="text-sm">+27766473499</span>
                         </li>
                         <li class="flex items-center gap-3 text-sm text-gray-300">
-                            <i data-lucide="calculator" class="w-3 h-3 md:w-4 md:h-4 text-white"></i>
+                            <i data-lucide="mail" class="w-4 h-4 md:w-5 md:h-5 text-white"></i>
+                            <a href="mailto:victor@maribamedia.co.za" class="hover:text-white text-sm">victor@maribamedia.co.za</a>
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-gray-300">
+                            <i data-lucide="calculator" class="w-4 h-4 md:w-5 md:h-5 text-white"></i>
                             <a href="https://thehybridcalculator.lovable.app/" 
                                target="_blank"
                                class="hover:text-white text-sm">EPC Cost Calculator</a>
-                        </li>
-                        <li class="flex items-center gap-3 text-sm text-gray-300">
-                            <i data-lucide="youtube" class="w-3 h-3 md:w-4 md:h-4 text-white"></i>
-                            <a href="https://m.youtube.com/@TheHybridTree" 
-                               target="_blank"
-                               class="hover:text-white text-sm">EPC Case Studies</a>
                         </li>
                     </ul>
                 </div>
@@ -1207,16 +1421,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- Cal floating-popup embed code -->
-    <script type="text/javascript">
-      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-      Cal("init", "south-africa", {origin:"https://app.cal.com"});
-
-      Cal.ns["south-africa"]("floatingButton", {"calLink":"partner-discovery/south-africa","config":{"layout":"month_view"}}); 
-      Cal.ns["south-africa"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
-    </script>
-    <!-- Cal floating-popup embed code ends -->
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -1303,6 +1507,14 @@
                         behavior: 'smooth'
                     });
                 }
+            });
+        });
+
+        // WhatsApp click tracking
+        document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+            link.addEventListener('click', function() {
+                // You can add analytics tracking here if needed
+                console.log('WhatsApp link clicked:', this.href);
             });
         });
     </script>
